@@ -1183,6 +1183,10 @@ static int pr_sgroup(char *restrict const outbuf, const proc_t *restrict const p
 
 //////////////////////////////////////////////////////////////////////////////////
 
+// OKERNEL
+static int pr_okernel(char *restrict const outbuf, const proc_t *restrict const pp){
+  return snprintf(outbuf, COLWID, "%u", pp->okernel);
+}
 // PID pid, TGID tgid
 static int pr_procs(char *restrict const outbuf, const proc_t *restrict const pp){
   return snprintf(outbuf, COLWID, "%u", pp->tgid);
@@ -1596,6 +1600,7 @@ static const format_struct format_array[] = {
 {"numa",      "NUMA",    pr_numa,     sr_nop,     4,   0,    XXX, AN|RIGHT},
 {"nvcsw",     "VCSW",    pr_nop,      sr_nop,     5,   0,    XXX, AN|RIGHT},
 {"nwchan",    "WCHAN",   pr_nwchan,   sr_nop,     6,   0,    XXX, TO|RIGHT},
+{"okernel",   "OKERNEL", pr_okernel,  sr_nop,     1,   0,    LNX, PO|RIGHT},
 {"opri",      "PRI",     pr_opri,     sr_priority, 3,  0,    SUN, TO|RIGHT},
 {"osz",       "SZ",      pr_nop,      sr_nop,     2,   0,    SUN, PO|RIGHT},
 {"oublk",     "OUBLK",   pr_nop,      sr_nop,     5,   0,    BSD, AN|RIGHT}, /*oublock*/

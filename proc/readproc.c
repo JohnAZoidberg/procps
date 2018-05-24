@@ -1056,6 +1056,9 @@ static proc_t* simple_readproc(PROCTAB *restrict const PT, proc_t *restrict cons
             p->cgroup = file2strvec(path, "cgroup");
     }
 
+    if (likely(file2str(path, "okernel", &ub) != -1))
+            p->okernel = atoi(ub.buf);
+
     if (unlikely(flags & PROC_FILLOOM)) {
         if (likely(file2str(path, "oom_score", &ub) != -1))
             oomscore2proc(ub.buf, p);

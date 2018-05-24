@@ -52,6 +52,7 @@ typedef struct proc_t {
 // 1st 16 bytes
     int
         tid,		// (special)       task id, the POSIX thread ID (see also: tgid)
+	okernel,        //                 Show whether a process is in okernel-mode or not
     	ppid;		// stat,status     pid of parent process
     unsigned long       // next 2 fields are NOT filled in by readproc
         maj_delta,      // stat (special) major page faults since last update
